@@ -1,8 +1,7 @@
 ﻿<Application x:Class="SandboxForSolvingProgrammingProblems.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SandboxForSolvingProgrammingProblems"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:SandboxForSolvingProgrammingProblems">
     <Application.Resources>
         <ResourceDictionary Source="Resources/Theme/Default.xaml" />
     </Application.Resources>
