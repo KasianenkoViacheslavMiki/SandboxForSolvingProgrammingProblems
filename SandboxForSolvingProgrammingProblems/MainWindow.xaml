@@ -37,12 +37,14 @@
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="Control.FontFamily" Value="Verdana" />
-            <Setter Property="Control.Background" Value="Black" />
-            <Setter Property="Control.Foreground" Value="White" />
-            <Setter Property="Control.Margin" Value="10" />
+            <Setter Property="Control.Background" Value="{StaticResource BtnBackground}"/>
+            <Setter Property="Control.Foreground" Value="{StaticResource TextBoxForeground}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="ButtonContent" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                        </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="{StaticResource BtnMouseOver}" />
@@ -59,7 +61,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="Main">
         <ContentControl Grid.Column="0" Content="{Binding SelectedViewModel}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewsmodels:WorkspaceViewModel}">
