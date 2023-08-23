@@ -1,4 +1,5 @@
-﻿using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu;
+﻿using SandboxForSolvingProgrammingProblems.Infrastructure.API;
+using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
     class WorkspaceViewModel : BaseViewModel
     {
         private BaseSideViewModel selectedSideView;
-
+        private ManagerSandboxAPI ManagerSandboxAPI;
         private bool isCustom;
 
         public bool IsCustom
@@ -21,13 +22,15 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             }
             set 
             {
-                isCustom = value; 
+                isCustom = value;
+                OnPropertyChanged(nameof(IsCustom));
             }
         }
 
         public WorkspaceViewModel()
         {
             this.selectedSideView = new ManualSettingsSideViewModel();
+            ManagerSandboxAPI = ManagerSandboxAPI.GetInstance();
         }
 
         public BaseSideViewModel SelectedSideView
