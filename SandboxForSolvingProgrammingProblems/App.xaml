@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:SandboxForSolvingProgrammingProblems"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Resources/Theme/Default.xaml" />
     </Application.Resources>
 </Application>

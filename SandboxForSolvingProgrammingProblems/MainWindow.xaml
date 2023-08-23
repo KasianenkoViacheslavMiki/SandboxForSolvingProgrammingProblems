@@ -6,6 +6,57 @@
         xmlns:local="clr-namespace:SandboxForSolvingProgrammingProblems"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.Foreground" Value="{StaticResource FontForeground}" />
+            <Setter Property="Control.Margin" Value="10" />
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Control.FontFamily" Value="./Resources/Fonts/#Fira Code" />
+            <Setter Property="Control.Background" Value="{StaticResource TextBoxBackground}" />
+            <Setter Property="Control.Foreground" Value="{StaticResource TextBoxForeground}"  />
+            <Setter Property="Control.Margin" Value="10" />
+            <Setter Property="ScrollViewer.Foreground" Value="{StaticResource ScrollBarForeground}" />
+            <Setter Property="ScrollViewer.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseCaptured" Value="True">
+                                <Setter Property="Background" Value="{StaticResource ScrollBarIsPressed}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.Background" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="Control.Margin" Value="10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource BtnMouseOver}" />
+                                <Setter Property="Foreground" Value="{StaticResource FontForeground}" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="{StaticResource BtnPressed}" />
+                                <Setter Property="Foreground" Value="{StaticResource FontForeground}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
 
     </Grid>

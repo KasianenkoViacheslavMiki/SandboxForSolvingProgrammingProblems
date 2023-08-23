@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Text-->
+    <SolidColorBrush x:Key="FontForeground" Color="Black" />
+    
+    <!--TextBox-->
+    <SolidColorBrush x:Key="TextBoxBackground" Color="#edeced" />
+    <SolidColorBrush x:Key="TextBoxForeground" Color="#121212" />
+
+    <!--Button-->
+    <SolidColorBrush x:Key="BtnBackground" Color="#eeeeee" />
+    <SolidColorBrush x:Key="BtnMouseOver" Color="#dedede" />
+    <SolidColorBrush x:Key="BtnPressed" Color="#d1d1d1" />
+
+    <!--ScrollBar-->
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="ScrollBarForeground" Color="#b0b0b0" />
+    <SolidColorBrush x:Key="ScrollBarIsPressed" Color="#a8a8a8" />
+    
+</ResourceDictionary>
