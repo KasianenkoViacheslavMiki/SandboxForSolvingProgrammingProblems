@@ -7,4 +7,32 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\Commands\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Fonts\FiraCode-Bold.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\FiraCode-Light.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\FiraCode-Medium.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\FiraCode-Regular.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\FiraCode-Retina.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\FiraCode-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
