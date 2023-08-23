@@ -7,32 +7,73 @@
              xmlns:viewsmodels="clr-namespace:SandboxForSolvingProgrammingProblems.ViewModels.SideMenu"
              xmlns:views="clr-namespace:SandboxForSolvingProgrammingProblems.Views.SideMenu"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="900" d:DesignWidth="1600">
     <Grid x:Name="Workspace">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="500px"/>
             <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
         <Grid x:Name="SideMenu" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="25px"/>
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
             <Grid x:Name="SideButtons" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Name="Manual" Content="Manual" ToolTip="Manual settings your sandbox"/>
-                <Button IsEnabled="False" Grid.Column="1" Name="ListTask" Content="List Task" ToolTip="List task where you can selected task"/>
+                <Button Grid.Column="1" Name="Manual" Content="Manual" ToolTip="Manual settings your sandbox"/>
+                <Button IsEnabled="False" Grid.Column="3" Name="ListTask" Content="List Task" ToolTip="List task where you can selected task"/>
             </Grid>
-            <ContentControl Grid.Row="1" Content="{Binding SelectedSideView}">
+            <ContentControl Grid.Row="1" Content="{Binding SelectedSideView}" RenderTransformOrigin="0.817,1.608">
                 <ContentControl.Resources>
                     <DataTemplate DataType="{x:Type viewsmodels:ManualSettingsSideViewModel}">
                         <views:ManualSettingsSideView/>
                     </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
+        </Grid>
+        <Grid x:Name="Sandbox" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25px"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="25px"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="TopButtons">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10px"/>
+                    <ColumnDefinition Width="150px"/>
+                    <ColumnDefinition Width="10px"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="1"></ComboBox>
+            </Grid>
+            <Grid x:Name="Result" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200px"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid x:Name="BottomButtons" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100px"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Run" Grid.Column="2" Content="Run" />
+            </Grid>
+            
         </Grid>
     </Grid>
 </UserControl>
