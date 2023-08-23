@@ -40,9 +40,11 @@
         <Grid x:Name="Sandbox" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25px"/>
+                <RowDefinition Height="5px"/>
                 <RowDefinition Height="9*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2.5*"/>
                 <RowDefinition Height="25px"/>
+                <RowDefinition Height="5px"/>
             </Grid.RowDefinitions>
             <Grid x:Name="TopButtons">
                 <Grid.ColumnDefinitions>
@@ -53,9 +55,12 @@
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="1"></ComboBox>
             </Grid>
-            <Grid x:Name="Result" Grid.Row="2">
+            <ScrollViewer Grid.Row="2">
+                <RichTextBox FontFamily="Fira Code"/>
+            </ScrollViewer>
+            <Grid x:Name="Result" Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200px"/>
+                    <ColumnDefinition Width="140px"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -64,8 +69,16 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <TextBlock  Grid.Row="0" Grid.Column="0" FontSize="18px" Text="Result"/>
+                <TextBox IsReadOnly="True" Grid.Row="0" Grid.Column="1" x:Name="TextBoxResult"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18px" Text="Your input"/>
+                <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" x:Name="TextBoxInput"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18px" Text="Output"/>
+                <TextBox IsReadOnly="True" Grid.Row="2" Grid.Column="1" x:Name="TextBoxOutput"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" FontSize="18px" Text="Expected"/>
+                <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="1" x:Name="TextBoxExpected"/>
             </Grid>
-            <Grid x:Name="BottomButtons" Grid.Row="3">
+            <Grid x:Name="BottomButtons" Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
