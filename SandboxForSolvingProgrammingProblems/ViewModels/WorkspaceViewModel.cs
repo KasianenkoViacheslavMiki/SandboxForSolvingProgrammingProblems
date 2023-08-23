@@ -11,6 +11,20 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
     {
         private BaseSideViewModel selectedSideView;
 
+        private bool isCustom;
+
+        public bool IsCustom
+        {
+            get 
+            { 
+                return isCustom; 
+            }
+            set 
+            {
+                isCustom = value; 
+            }
+        }
+
         public WorkspaceViewModel()
         {
             this.selectedSideView = new ManualSettingsSideViewModel();
