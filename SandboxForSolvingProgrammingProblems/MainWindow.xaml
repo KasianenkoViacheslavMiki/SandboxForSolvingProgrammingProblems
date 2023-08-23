@@ -7,7 +7,8 @@
         xmlns:viewsmodels="clr-namespace:SandboxForSolvingProgrammingProblems.ViewModels"
         xmlns:views="clr-namespace:SandboxForSolvingProgrammingProblems.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1600"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Control.FontFamily" Value="Verdana" />
