@@ -1,4 +1,5 @@
-﻿using SandboxForSolvingProgrammingProblems.Infrastructure.API;
+﻿using SandboxForSolvingProgrammingProblems.Infrastructure;
+using SandboxForSolvingProgrammingProblems.Infrastructure.API;
 using SandboxForSolvingProgrammingProblems.Infrastructure.Content;
 using SandboxForSolvingProgrammingProblems.Models;
 using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu;
@@ -9,15 +10,62 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SandboxForSolvingProgrammingProblems.ViewModels
 {
     class WorkspaceViewModel : BaseViewModel
     {
-        private BaseSideViewModel selectedSideView;
-        private ManagerSandboxAPI ManagerSandboxAPI;
-        private bool isCustom;
+        //Command
+        private RelayCommand runCommand;
+        public ICommand RunCommand 
+        {
+            get
+            {
+                return runCommand ?? (runCommand = new RelayCommand(obj =>
+                {
 
+                }));
+            }
+        }
+
+        //Navigation
+        private BaseSideViewModel selectedSideView;
+        public BaseSideViewModel SelectedSideView
+        {
+            get
+            {
+                return selectedSideView;
+            }
+            set
+            {
+                if (value is not BaseSideViewModel)
+                {
+                    selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
+                }
+                selectedSideView = value;
+            }
+        }
+        //Manager
+        private ManagerSandboxAPI ManagerSandboxAPI;
+
+        //Content
+        private RequestEvaluation requestEvaluation = new RequestEvaluation();
+
+        //Parametrs
+        private bool isCustom;
+        public bool IsCustom
+        {
+            get
+            {
+                return isCustom;
+            }
+            set
+            {
+                isCustom = value;
+                OnPropertyChanged(nameof(IsCustom));
+            }
+        }
 
         private ObservableCollection<Language> languages;
 
@@ -50,40 +98,15 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             }
         }
 
-        public bool IsCustom
-        {
-            get 
-            { 
-                return isCustom; 
-            }
-            set 
-            {
-                isCustom = value;
-                OnPropertyChanged(nameof(IsCustom));
-            }
-        }
 
+        //Construtor
         public WorkspaceViewModel()
         {
-            this.selectedSideView = new ManualSettingsSideViewModel();
+            this.selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
             ManagerSandboxAPI = ManagerSandboxAPI.GetInstance();
             Languages = SupportedProgrammingLanguages.SupportedLanguages();
         }
 
-        public BaseSideViewModel SelectedSideView
-        {
-            get
-            {
-                return selectedSideView;
-            }
-            set
-            {
-                if (value is not BaseSideViewModel)
-                {
-                    selectedSideView = new ManualSettingsSideViewModel();
-                }
-                selectedSideView = value;
-            }
-        }
+        
     }
 }
