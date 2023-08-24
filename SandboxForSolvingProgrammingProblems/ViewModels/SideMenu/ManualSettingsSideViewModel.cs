@@ -17,6 +17,8 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
         public ManualSettingsSideViewModel(RequestEvaluation requestEvaluation)
         {
             this.requestEvaluation = requestEvaluation;
+            MemoryLimit = 0;
+            TimeLimit = 0;
         }
 
         public int MemoryLimit
@@ -44,14 +46,5 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
                 OnPropertyChanged(nameof(TimeLimit));
             }
         }
-        //Validation Input only Number
-
-        public void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
     }
-
-
 }
