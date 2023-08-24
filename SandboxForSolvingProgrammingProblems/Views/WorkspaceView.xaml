@@ -53,7 +53,7 @@
                     <ColumnDefinition Width="10px"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="1"></ComboBox>
+                <ComboBox DisplayMemberPath="NameLanguage" ItemsSource="{Binding Path=Languages}" SelectedItem="{Binding Path=SelectedLanguages}" Grid.Column="1"></ComboBox>
             </Grid>
             <ScrollViewer Grid.Row="2">
                 <RichTextBox FontFamily="Fira Code"/>
