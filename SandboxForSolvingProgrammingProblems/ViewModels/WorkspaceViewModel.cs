@@ -24,7 +24,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {
                 return runCommand ?? (runCommand = new RelayCommand(obj =>
                 {
-
+                    requestEvaluation.Source = CodeText;
                 }));
             }
         }
@@ -98,6 +98,20 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             }
         }
 
+        private string codeText;
+
+        public string CodeText
+        {
+            get
+            {
+                return codeText;
+            }
+            set
+            {
+                codeText = value;
+                OnPropertyChanged(nameof(CodeText));
+            }
+        }
 
         //Construtor
         public WorkspaceViewModel()
