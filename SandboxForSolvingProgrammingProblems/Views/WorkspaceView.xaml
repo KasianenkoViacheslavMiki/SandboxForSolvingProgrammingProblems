@@ -56,7 +56,7 @@
                 <ComboBox DisplayMemberPath="NameLanguage" ItemsSource="{Binding Path=Languages}" SelectedItem="{Binding Path=SelectedLanguages}" Grid.Column="1"></ComboBox>
             </Grid>
             <ScrollViewer Grid.Row="2">
-                <RichTextBox FontFamily="Fira Code"/>
+                <TextBox Text="{Binding CodeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Fira Code"/>
             </ScrollViewer>
             <Grid x:Name="Result" Grid.Row="3">
                 <Grid.ColumnDefinitions>
