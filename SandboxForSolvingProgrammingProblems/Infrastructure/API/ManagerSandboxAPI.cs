@@ -75,9 +75,12 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
             return result;
         }
 
-        public Task<string> GetOutput(string id)
+        public async Task<string> GetOutput(string id)
         {
-            throw new NotImplementedException();
+            var response = await httpClient.GetAsync(id);
+            string result = await response.Content.ReadAsStringAsync();
+
+            return result;
         }
     }
 }
