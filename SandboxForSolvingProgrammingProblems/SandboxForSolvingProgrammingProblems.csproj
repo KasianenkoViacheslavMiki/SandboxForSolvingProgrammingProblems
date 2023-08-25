@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\API\Interface\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Resources\Fonts\FiraCode-Bold.ttf">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Content>
