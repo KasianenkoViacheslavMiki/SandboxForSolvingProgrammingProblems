@@ -5,13 +5,13 @@ using System.Text.Json.Serialization;
 public class RunStatus
 {
     [JsonPropertyName("memory_used")]
-    public string MemoryUsed { get; set; }
+    public double MemoryUsed { get; set; }
 
     [JsonPropertyName("status")]
     public string Status { get; set; }
 
     [JsonPropertyName("time_used")]
-    public string TimeUsed { get; set; }
+    public double TimeUsed { get; set; }
 
     [JsonPropertyName("signal")]
     public string Signal { get; set; }

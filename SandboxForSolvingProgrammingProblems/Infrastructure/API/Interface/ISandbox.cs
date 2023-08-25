@@ -11,5 +11,6 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API.Interface
     {
         public Task<Responce> GetCodeOnEvaluation(RequestEvaluation requestEvaluation);
         public Task<Responce> GetStatus(string id);
+        public Task<string> GetOutput(string id);
     }
 }

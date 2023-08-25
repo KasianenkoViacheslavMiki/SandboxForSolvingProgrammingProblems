@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -23,11 +24,36 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         {
             get
             {
-                return runCommand ?? (runCommand = new RelayCommand(obj =>
+                return runCommand ?? (runCommand = new RelayCommand(async obj =>
                 {
                     requestEvaluation.Source = CodeText;
                     requestEvaluation.Lang = SelectedLanguages.LangArgument;
-                    _ = managerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
+                    ResponceEvaluation = await managerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
+
+                    Thread threadStatus = new Thread(async obj =>
+                    {
+                        while (ResponceEvaluation.RequestStatus.Code != "REQUEST_FAILED" || ResponceEvaluation.RequestStatus.Code != "REQUEST_COMPLETED")
+                        {
+                            Thread.Sleep(5000);
+                            ResponceEvaluation = await managerSandboxAPI.GetStatus(ResponceEvaluation.StatusUpdateUrl);
+                        }
+                    });
+
+                    threadStatus.IsBackground = true;
+
+                    threadStatus.Start();
+                }));
+            }
+        }
+
+        private RelayCommand statusCommand;
+        public ICommand StatusCommand
+        {
+            get
+            {
+                return statusCommand ?? (statusCommand = new RelayCommand(async obj =>
+                {
+                    ResponceEvaluation = await managerSandboxAPI.GetStatus(ResponceEvaluation.StatusUpdateUrl);
                 }));
             }
         }
@@ -54,8 +80,63 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
 
         //Content
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
+        private Responce responceEvaluation;
+        private string output = "";
 
         //Parametrs
+
+        public Responce ResponceEvaluation 
+        {
+            get 
+            { 
+                if (responceEvaluation == null)
+                {
+                    responceEvaluation = new Responce();
+                    responceEvaluation.RequestStatus = new RequestStatus();
+                }
+                return responceEvaluation; 
+            }
+            set 
+            { 
+                responceEvaluation = value;
+                OnPropertyChanged(nameof(StatusString));
+                OnPropertyChanged(nameof(InputString));
+                OnPropertyChanged(nameof(OutputString));
+                OnPropertyChanged(nameof(ExpectedOutputString));
+                OnPropertyChanged(nameof(ResponceEvaluation));
+            }
+        }
+
+        public string? StatusString
+        {
+            get 
+            { 
+                return ResponceEvaluation.RequestStatus.Message; 
+            }
+        }
+
+        public string? InputString
+        {
+            get
+            {
+                return requestEvaluation.Input;
+            }
+        }
+        public string? OutputString
+        {
+            get
+            {
+                return output;
+            }
+        }
+        public string? ExpectedOutputString
+        {
+            get
+            {
+                return "Stub";
+            }
+        }
+
         private bool isCustom;
         public bool IsCustom
         {
@@ -115,6 +196,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 OnPropertyChanged(nameof(CodeText));
             }
         }
+
 
         //Construtor
         public WorkspaceViewModel()

@@ -70,13 +70,13 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock  Grid.Row="0" Grid.Column="0" FontSize="18px" Text="Result"/>
-                <TextBox IsReadOnly="True" Grid.Row="0" Grid.Column="1" x:Name="TextBoxResult"/>
+                <TextBox Text="{Binding StatusString, Mode=OneWay}" IsReadOnly="True" Grid.Row="0" Grid.Column="1" x:Name="TextBoxResult"/>
                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18px" Text="Your input"/>
-                <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" x:Name="TextBoxInput"/>
+                <TextBox Text="{Binding InputString, Mode=OneWay}" IsReadOnly="True" Grid.Row="1" Grid.Column="1" x:Name="TextBoxInput"/>
                 <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18px" Text="Output"/>
-                <TextBox IsReadOnly="True" Grid.Row="2" Grid.Column="1" x:Name="TextBoxOutput"/>
+                <TextBox Text="{Binding OutputString, Mode=OneWay}" IsReadOnly="True" Grid.Row="2" Grid.Column="1" x:Name="TextBoxOutput"/>
                 <TextBlock Grid.Row="3" Grid.Column="0" FontSize="18px" Text="Expected"/>
-                <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="1" x:Name="TextBoxExpected"/>
+                <TextBox Text="{Binding ExpectedOutputString, Mode=OneWay}" IsReadOnly="True" Grid.Row="3" Grid.Column="1" x:Name="TextBoxExpected"/>
             </Grid>
             <Grid x:Name="BottomButtons" Grid.Row="4">
                 <Grid.ColumnDefinitions>
