@@ -23,7 +23,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" FontSize="12px" HorizontalAlignment="Center" Grid.Row="0" Text="Memory limit"/>
-        <Slider Grid.Column="1"  x:Name="MemoryLimit" Value="{Binding MemoryLimit, Mode=TwoWay}" Grid.Row="1" Maximum="999999" SmallChange="1" LargeChange="5"/>
+        <Slider Grid.Column="1"  x:Name="MemoryLimit" Value="{Binding MemoryLimit, Mode=TwoWay}" Grid.Row="1" Maximum="262144" SmallChange="1" LargeChange="5"/>
         <Grid Grid.Row="2" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -35,7 +35,7 @@
             <TextBlock Grid.Column="2" FontSize="12px" Text="memory"/>
         </Grid>
         <TextBlock Grid.Column="1"  FontSize="12px" HorizontalAlignment="Center" Grid.Row="3" Text="Time limit"/>
-        <Slider Grid.Column="1"  x:Name="TimeLimit" Value="{Binding TimeLimit, Mode=TwoWay}" Grid.Row="4" Maximum="999999" SmallChange="1" LargeChange="5"/>
+        <Slider Grid.Column="1"  x:Name="TimeLimit" Value="{Binding TimeLimit, Mode=TwoWay}" Grid.Row="4" Maximum="5" SmallChange="0.1" LargeChange="0.5"/>
         <Grid Grid.Row="5" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
