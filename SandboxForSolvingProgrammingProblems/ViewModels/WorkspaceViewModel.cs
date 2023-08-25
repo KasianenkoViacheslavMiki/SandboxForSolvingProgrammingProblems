@@ -29,6 +29,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 {
                     requestEvaluation.Source = CodeText;
                     requestEvaluation.Lang = SelectedLanguages.LangArgument;
+                    IsRunning = true;
                     try
                     {
                         ResponceEvaluation = await managerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
@@ -38,7 +39,6 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                         MessageBox.Show(ex.Message,"Error run", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
-                    IsRunning = true;
                     Thread threadStatus = new Thread(async obj =>
                     {
                         while (ResponceEvaluation.RequestStatus.Code != "REQUEST_FAILED" && ResponceEvaluation.RequestStatus.Code != "REQUEST_COMPLETED")
@@ -149,7 +149,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 return "Stub";
             }
         }
-        private bool isRunning;
+        private bool isRunning = false;
         public bool IsRunning
         {
             get
@@ -167,7 +167,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         {
             get
             {
-                return isRunning ? Visibility.Hidden: Visibility.Visible;
+                return isRunning ? Visibility.Visible : Visibility.Hidden;
             }
         }
         private bool isCustom;
