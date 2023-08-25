@@ -1,5 +1,6 @@
 ﻿using SandboxForSolvingProgrammingProblems.Infrastructure;
 using SandboxForSolvingProgrammingProblems.Infrastructure.API;
+using SandboxForSolvingProgrammingProblems.Infrastructure.API.Interface;
 using SandboxForSolvingProgrammingProblems.Infrastructure.Content;
 using SandboxForSolvingProgrammingProblems.Models;
 using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu;
@@ -26,7 +27,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 {
                     requestEvaluation.Source = CodeText;
                     requestEvaluation.Lang = SelectedLanguages.LangArgument;
-                    _ = ManagerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
+                    _ = managerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
                 }));
             }
         }
@@ -49,7 +50,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             }
         }
         //Manager
-        private ManagerSandboxAPI ManagerSandboxAPI;
+        private ISandbox managerSandboxAPI;
 
         //Content
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
@@ -119,7 +120,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         public WorkspaceViewModel()
         {
             this.selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
-            ManagerSandboxAPI = ManagerSandboxAPI.GetInstance();
+            managerSandboxAPI = ManagerSandboxAPI.GetInstance();
             Languages = SupportedProgrammingLanguages.SupportedLanguages();
         }
 
