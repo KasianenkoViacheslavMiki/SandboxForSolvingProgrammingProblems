@@ -11,7 +11,7 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
 {
     abstract class ManagerAPI
     {
-        protected HttpClient httpClient;
+        protected readonly HttpClient httpClient;
 
         public ManagerAPI()
         {
@@ -19,7 +19,6 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
 
             this.httpClient = new HttpClient();
             this.httpClient.DefaultRequestHeaders.Accept.Clear();
-            this.httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident / 6.0)");
         }
     }
 }
