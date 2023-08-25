@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SandboxForSolvingProgrammingProblems.ViewModels
@@ -28,33 +29,39 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 {
                     requestEvaluation.Source = CodeText;
                     requestEvaluation.Lang = SelectedLanguages.LangArgument;
-                    ResponceEvaluation = await managerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
-
+                    try
+                    {
+                        ResponceEvaluation = await managerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message,"Error run", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    IsRunning = true;
                     Thread threadStatus = new Thread(async obj =>
                     {
                         while (ResponceEvaluation.RequestStatus.Code != "REQUEST_FAILED" && ResponceEvaluation.RequestStatus.Code != "REQUEST_COMPLETED")
                         {
                             Thread.Sleep(5000);
-                            ResponceEvaluation = await managerSandboxAPI.GetStatus(ResponceEvaluation.StatusUpdateUrl);
+                            try
+                            {
+                                ResponceEvaluation = await managerSandboxAPI.GetStatus(ResponceEvaluation.StatusUpdateUrl);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error status", MessageBoxButton.OK, MessageBoxImage.Error);
+                                IsRunning = false;
+                                return;
+                            }
                         }
                         OutputString = await managerSandboxAPI.GetOutput(ResponceEvaluation.Result.RunStatus.Output);
+                        IsRunning = false;
                     });
 
                     threadStatus.IsBackground = true;
 
                     threadStatus.Start();
-                }));
-            }
-        }
-
-        private RelayCommand statusCommand;
-        public ICommand StatusCommand
-        {
-            get
-            {
-                return statusCommand ?? (statusCommand = new RelayCommand(async obj =>
-                {
-                    ResponceEvaluation = await managerSandboxAPI.GetStatus(ResponceEvaluation.StatusUpdateUrl);
                 }));
             }
         }
@@ -142,7 +149,27 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 return "Stub";
             }
         }
-
+        private bool isRunning;
+        public bool IsRunning
+        {
+            get
+            {
+                return isRunning;
+            }
+            set
+            {
+                isRunning = value;
+                OnPropertyChanged(nameof(IsRunning));
+                OnPropertyChanged(nameof(IsLoad));
+            }
+        }
+        public Visibility IsLoad
+        {
+            get
+            {
+                return isRunning ? Visibility.Hidden: Visibility.Visible;
+            }
+        }
         private bool isCustom;
         public bool IsCustom
         {
