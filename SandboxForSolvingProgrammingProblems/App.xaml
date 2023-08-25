@@ -3,6 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SandboxForSolvingProgrammingProblems">
     <Application.Resources>
-        <ResourceDictionary Source="Resources/Theme/Default.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Name="Theme">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="Resources/Theme/Default.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Name="CustomUI">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="Resources/CustomUI/Style.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -23,5 +23,18 @@ namespace SandboxForSolvingProgrammingProblems
             MainWindow.Show();
             base.OnStartup(e);
         }
+        public ResourceDictionary ThemeDictionary
+        {
+            get 
+            { 
+                return Resources.MergedDictionaries[0]; 
+            }
+        }
+
+        public void ChangeTheme(Uri uri)
+        {
+            ThemeDictionary.MergedDictionaries.Clear();
+            ThemeDictionary.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
+        }
     }
 }
