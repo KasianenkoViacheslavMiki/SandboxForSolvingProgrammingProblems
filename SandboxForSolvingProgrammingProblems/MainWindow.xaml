@@ -6,36 +6,44 @@
         xmlns:local="clr-namespace:SandboxForSolvingProgrammingProblems"
         xmlns:viewsmodels="clr-namespace:SandboxForSolvingProgrammingProblems.ViewModels"
         xmlns:views="clr-namespace:SandboxForSolvingProgrammingProblems.Views"
+        xmlns:customui="clr-namespace:SandboxForSolvingProgrammingProblems.CustomUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1600"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource WindowBackground}">
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Control.FontFamily" Value="Arial" />
-            <Setter Property="Control.Foreground" Value="{StaticResource FontForeground}" />
+            <Setter Property="Control.Foreground" Value="{DynamicResource FontForeground}" />
             <Setter Property="Control.Margin" Value="10" />
             <Setter Property="FontSize" Value="16"/>
         </Style>
 
-        <Style TargetType="{x:Type RichTextBox}">
+        <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="14px"/>
             <Setter Property="FontFamily" Value="./Resources/Fonts/#Fira Code" />
-            <Setter Property="Background" Value="{StaticResource TextBoxBackground}" />
-            <Setter Property="Foreground" Value="{StaticResource TextBoxForeground}"  />
+            <Setter Property="Background" Value="{DynamicResource TextBoxBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBoxForeground}"  />
             <Setter Property="Margin" Value="10" />
         </Style>
 
-        <!--<Style TargetType="{x:Type ScrollViewer}">
-            <Setter Property="Control.FontFamily" Value="./Resources/Fonts/#Fira Code" />
+        <Style TargetType="{x:Type customui:NumberTextBox}">
+            <Setter Property="FontSize" Value="14px"/>
+            <Setter Property="FontFamily" Value="./Resources/Fonts/#Fira Code" />
+            <Setter Property="Background" Value="{DynamicResource TextBoxBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBoxForeground}"  />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style TargetType="{x:Type ScrollViewer}">
             <Setter Property="Control.Background" Value="{StaticResource TextBoxBackground}" />
             <Setter Property="Control.Foreground" Value="{StaticResource TextBoxForeground}"  />
-            <Setter Property="Control.Margin" Value="10" />
-        </Style>-->
+        </Style>
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="Control.FontFamily" Value="Arial" />
-            <Setter Property="Control.Background" Value="{StaticResource BtnBackground}"/>
-            <Setter Property="Control.Foreground" Value="{StaticResource TextBoxForeground}" />
+            <Setter Property="Control.Background" Value="{DynamicResource BtnBackground}"/>
+            <Setter Property="Control.Foreground" Value="{DynamicResource TextBoxForeground}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -44,13 +52,13 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource BtnMouseOver}" />
-                                <Setter Property="Foreground" Value="{StaticResource FontForeground}" />
+                                <Setter Property="Background" Value="{DynamicResource BtnMouseOver}" />
+                                <Setter Property="Foreground" Value="{DynamicResource FontForeground}" />
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="{StaticResource BtnPressed}" />
-                                <Setter Property="Foreground" Value="{StaticResource FontForeground}" />
+                                <Setter Property="Background" Value="{DynamicResource BtnPressed}" />
+                                <Setter Property="Foreground" Value="{DynamicResource FontForeground}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

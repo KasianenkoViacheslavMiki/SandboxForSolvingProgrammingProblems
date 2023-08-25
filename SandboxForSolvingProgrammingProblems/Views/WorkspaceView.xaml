@@ -10,12 +10,16 @@
              d:DesignHeight="900" d:DesignWidth="1600">
     
     <Grid x:Name="Workspace">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500px"/>
             <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="10px"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="SideMenu" Grid.Column="0">
+        <Grid Grid.Row="1" x:Name="SideMenu" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25px"/>
                 <RowDefinition Height="9*"/>
@@ -39,7 +43,7 @@
                 </ContentControl.Resources>
             </ContentControl>
         </Grid>
-        <Grid x:Name="Sandbox" Grid.Column="1">
+        <Grid Grid.Row="1"  x:Name="Sandbox" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25px"/>
                 <RowDefinition Height="5px"/>
@@ -55,11 +59,13 @@
                     <ColumnDefinition Width="150px"/>
                     <ColumnDefinition Width="10px"/>
                     <ColumnDefinition/>
+                    <ColumnDefinition Width="200px"/>
                 </Grid.ColumnDefinitions>
                 <ComboBox DisplayMemberPath="NameLanguage" ItemsSource="{Binding Path=Languages}" SelectedItem="{Binding Path=SelectedLanguages}" Grid.Column="1"></ComboBox>
+                <CheckBox Grid.Column="4"  IsChecked="{Binding ToggleTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" Style="{DynamicResource CheckBoxStyle1}" VerticalAlignment="Center"/>
             </Grid>
             <ScrollViewer Grid.Row="2">
-                <TextBox IsReadOnly="{Binding IsRunning}" Text="{Binding CodeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Fira Code"/>
+                <TextBox AcceptsReturn="True" IsReadOnly="{Binding IsRunning}" Text="{Binding CodeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Fira Code"/>
             </ScrollViewer>
             <Control Grid.Row="2" Style="{StaticResource BusyAnimationStyle}" Visibility="{Binding IsLoad, Mode=OneWay}"/>
             <Grid x:Name="Result" Grid.Row="4">

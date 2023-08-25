@@ -89,6 +89,11 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         //Content
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
         private Responce responceEvaluation;
+        private Dictionary<bool, string> themeURI = new Dictionary<bool, string>()
+        {
+            {true,"\\Resources\\Theme\\Dark.xaml" },
+            {false,"\\Resources\\Theme\\Default.xaml" }
+        };
 
         //Parametrs
 
@@ -149,6 +154,22 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 return "Stub";
             }
         }
+        private bool toggleTheme = false;
+        public bool ToggleTheme
+        {
+            get
+            {
+                return toggleTheme;
+            }
+            set
+            {
+                var app = (App)Application.Current;
+                app.ChangeTheme(new Uri(themeURI[value], UriKind.Relative));
+                toggleTheme = value;
+                OnPropertyChanged(nameof(ToggleTheme));
+            }
+        }
+
         private bool isRunning = false;
         public bool IsRunning
         {
