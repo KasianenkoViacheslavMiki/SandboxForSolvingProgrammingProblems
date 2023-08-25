@@ -8,6 +8,7 @@
              xmlns:views="clr-namespace:SandboxForSolvingProgrammingProblems.Views.SideMenu"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1600">
+    
     <Grid x:Name="Workspace">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500px"/>
@@ -58,8 +59,9 @@
                 <ComboBox DisplayMemberPath="NameLanguage" ItemsSource="{Binding Path=Languages}" SelectedItem="{Binding Path=SelectedLanguages}" Grid.Column="1"></ComboBox>
             </Grid>
             <ScrollViewer Grid.Row="2">
-                <TextBox Text="{Binding CodeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Fira Code"/>
+                <TextBox IsReadOnly="{Binding IsRunning}" Text="{Binding CodeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Fira Code"/>
             </ScrollViewer>
+            <Control Grid.Row="2" Style="{StaticResource BusyAnimationStyle}" Visibility="{Binding IsLoad, Mode=OneWay}"/>
             <Grid x:Name="Result" Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="140px"/>
