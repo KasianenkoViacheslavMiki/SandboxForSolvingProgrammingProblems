@@ -32,11 +32,12 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
 
                     Thread threadStatus = new Thread(async obj =>
                     {
-                        while (ResponceEvaluation.RequestStatus.Code != "REQUEST_FAILED" || ResponceEvaluation.RequestStatus.Code != "REQUEST_COMPLETED")
+                        while (ResponceEvaluation.RequestStatus.Code != "REQUEST_FAILED" && ResponceEvaluation.RequestStatus.Code != "REQUEST_COMPLETED")
                         {
                             Thread.Sleep(5000);
                             ResponceEvaluation = await managerSandboxAPI.GetStatus(ResponceEvaluation.StatusUpdateUrl);
                         }
+                        OutputString = await managerSandboxAPI.GetOutput(ResponceEvaluation.Result.RunStatus.Output);
                     });
 
                     threadStatus.IsBackground = true;
@@ -81,7 +82,6 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         //Content
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
         private Responce responceEvaluation;
-        private string output = "";
 
         //Parametrs
 
@@ -101,7 +101,6 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 responceEvaluation = value;
                 OnPropertyChanged(nameof(StatusString));
                 OnPropertyChanged(nameof(InputString));
-                OnPropertyChanged(nameof(OutputString));
                 OnPropertyChanged(nameof(ExpectedOutputString));
                 OnPropertyChanged(nameof(ResponceEvaluation));
             }
@@ -122,11 +121,18 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 return requestEvaluation.Input;
             }
         }
+
+        private string outputString = "";
         public string? OutputString
         {
             get
             {
-                return output;
+                return outputString;
+            }
+            set
+            {
+                outputString = value;
+                OnPropertyChanged(nameof(OutputString));
             }
         }
         public string? ExpectedOutputString
