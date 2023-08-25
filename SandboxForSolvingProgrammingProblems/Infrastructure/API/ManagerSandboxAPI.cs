@@ -66,7 +66,16 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
             return result;
         }
 
-        public Task<Responce> GetStatus(string id)
+        public async Task<Responce> GetStatus(string id)
+        {
+            var response = await httpClient.GetAsync(id);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Responce result = JsonSerializer.Deserialize<Responce>(responseContent);
+
+            return result;
+        }
+
+        public Task<string> GetOutput(string id)
         {
             throw new NotImplementedException();
         }
