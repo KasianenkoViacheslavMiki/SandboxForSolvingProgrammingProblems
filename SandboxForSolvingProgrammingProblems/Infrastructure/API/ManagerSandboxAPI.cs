@@ -6,9 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
 {
@@ -17,6 +22,7 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
         IGetAPIKey getAPIKey;
 
         private readonly string apikey;
+        private readonly string endpointEvaluationURL = "https://api.hackerearth.com/v4/partner/code-evaluation/submissions/";
 
         private static ManagerSandboxAPI instance;
         private static ManagerSandboxAPI Instance
@@ -49,9 +55,15 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
             return Instance;
         }
 
-        public Task<Responce> GetCodeOnEvaluation(RequestEvaluation requestEvaluation)
+        public async Task<Responce> GetCodeOnEvaluation(RequestEvaluation requestEvaluation)
         {
-            throw new NotImplementedException();
+            var content = new StringContent(JsonSerializer.Serialize(requestEvaluation));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await httpClient.PostAsync(endpointEvaluationURL, content);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<Responce>(responseContent);
+            return result;
         }
 
         public Task<Responce> GetStatus(string id)

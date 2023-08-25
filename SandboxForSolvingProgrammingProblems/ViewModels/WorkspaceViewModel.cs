@@ -25,6 +25,8 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 return runCommand ?? (runCommand = new RelayCommand(obj =>
                 {
                     requestEvaluation.Source = CodeText;
+                    requestEvaluation.Lang = SelectedLanguages.LangArgument;
+                    _ = ManagerSandboxAPI.GetCodeOnEvaluation(requestEvaluation);
                 }));
             }
         }
