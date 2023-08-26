@@ -9,7 +9,10 @@
     <!--TextBox-->
     <SolidColorBrush x:Key="TextBoxBackground" Color="#edeced" />
     <SolidColorBrush x:Key="TextBoxForeground" Color="#121212" />
-
+    
+    <!--Border-->
+    <SolidColorBrush x:Key="BorderBrush" Color="#f0f0f1" />
+    
     <!--Button-->
     <SolidColorBrush x:Key="BtnBackground" Color="#eeeeee" />
     <SolidColorBrush x:Key="BtnMouseOver" Color="#dedede" />

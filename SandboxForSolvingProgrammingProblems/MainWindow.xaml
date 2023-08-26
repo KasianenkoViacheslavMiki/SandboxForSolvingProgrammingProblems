@@ -21,6 +21,7 @@
 
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="14px"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
             <Setter Property="FontFamily" Value="./Resources/Fonts/#Fira Code" />
             <Setter Property="Background" Value="{DynamicResource TextBoxBackground}" />
             <Setter Property="Foreground" Value="{DynamicResource TextBoxForeground}"  />
@@ -29,19 +30,16 @@
 
         <Style TargetType="{x:Type customui:NumberTextBox}">
             <Setter Property="FontSize" Value="14px"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
             <Setter Property="FontFamily" Value="./Resources/Fonts/#Fira Code" />
             <Setter Property="Background" Value="{DynamicResource TextBoxBackground}" />
             <Setter Property="Foreground" Value="{DynamicResource TextBoxForeground}"  />
             <Setter Property="Margin" Value="5" />
         </Style>
 
-        <Style TargetType="{x:Type ScrollViewer}">
-            <Setter Property="Control.Background" Value="{StaticResource TextBoxBackground}" />
-            <Setter Property="Control.Foreground" Value="{StaticResource TextBoxForeground}"  />
-        </Style>
-
         <Style TargetType="{x:Type Button}">
             <Setter Property="Control.FontFamily" Value="Arial" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
             <Setter Property="Control.Background" Value="{DynamicResource BtnBackground}"/>
             <Setter Property="Control.Foreground" Value="{DynamicResource TextBoxForeground}" />
             <Setter Property="Template">
