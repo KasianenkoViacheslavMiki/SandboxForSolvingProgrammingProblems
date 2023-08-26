@@ -1,12 +1,15 @@
 ﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-[DataContract]
-public class RequestStatus
+namespace SandboxForSolvingProgrammingProblems.Models
 {
-    [JsonPropertyName("message")]
-    public string Message { get; set; }
+    [DataContract]
+    public class RequestStatus
+    {
+        [JsonPropertyName("message")]
+        public string Message { get; set; }
 
-    [JsonPropertyName("code")]
-    public string Code { get; set; }
+        [JsonPropertyName("code")]
+        public string Code { get; set; }
+    }
 }
