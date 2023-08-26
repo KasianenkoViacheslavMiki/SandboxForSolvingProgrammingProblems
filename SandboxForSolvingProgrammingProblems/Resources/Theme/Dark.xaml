@@ -22,4 +22,8 @@
     <SolidColorBrush x:Key="ScrollBarBackground" Color="#55545454" />
     <SolidColorBrush x:Key="ScrollBarForeground" Color="#9c9c9c" />
     <SolidColorBrush x:Key="ScrollBarIsPressed" Color="#b0b0b0" />
+
+    <SolidColorBrush x:Key="MouseOverBackground" Color="#383745" />
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="{DynamicResource MouseOverBackground}"/>
+
 </ResourceDictionary>

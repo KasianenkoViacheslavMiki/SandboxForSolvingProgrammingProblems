@@ -61,13 +61,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="200px"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Style="{StaticResource ComboBoxStyle}" Foreground="{DynamicResource TextBoxForeground}" Background="{DynamicResource TextBoxBackground}" DisplayMemberPath="NameLanguage" ItemsSource="{Binding Path=Languages}" SelectedItem="{Binding Path=SelectedLanguages}" Grid.Column="1">
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="ComboBoxItem">
-                            <Setter Property="Background" Value="{DynamicResource TextBoxBackground}"/>
-                            <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBackground}"/>
-                        </Style>
-                    </ComboBox.ItemContainerStyle>
+                <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle}" Foreground="{DynamicResource TextBoxForeground}" Background="{DynamicResource TextBoxBackground}" BorderBrush="{DynamicResource BorderBrush}" DisplayMemberPath="NameLanguage" ItemsSource="{Binding Path=Languages}" SelectedItem="{Binding Path=SelectedLanguages}" Grid.Column="1">
                 </ComboBox>
                 <CheckBox Grid.Column="4"  IsChecked="{Binding ToggleTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" Style="{DynamicResource CheckBoxStyle1}" VerticalAlignment="Center"/>
             </Grid>
