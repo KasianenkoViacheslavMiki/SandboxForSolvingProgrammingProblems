@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace SandboxForSolvingProgrammingProblems.Models
 {
     [DataContract]
-    public class TaskResponce
+    public class ResponceTaskList
     {
         [JsonPropertyName("user_name")]
         public string UserName { get; set; }
