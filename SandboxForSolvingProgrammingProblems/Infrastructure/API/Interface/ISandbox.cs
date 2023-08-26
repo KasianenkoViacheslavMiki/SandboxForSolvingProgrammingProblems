@@ -9,8 +9,8 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API.Interface
 {
     public interface ISandbox
     {
-        public Task<Responce> GetCodeOnEvaluation(RequestEvaluation requestEvaluation);
-        public Task<Responce> GetStatus(string id);
+        public Task<ResponceEvaluation> GetCodeOnEvaluation(RequestEvaluation requestEvaluation);
+        public Task<ResponceEvaluation> GetStatus(string id);
         public Task<string> GetOutput(string id);
     }
 }

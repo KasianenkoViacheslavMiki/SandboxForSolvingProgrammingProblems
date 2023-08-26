@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace SandboxForSolvingProgrammingProblems.Models
 {
     [DataContract]
-    public class Responce
+    public class ResponceEvaluation
     {
         [JsonPropertyName("request_status")]
         public RequestStatus RequestStatus { get; set; }

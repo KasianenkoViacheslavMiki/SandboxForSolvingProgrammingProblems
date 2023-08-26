@@ -55,22 +55,22 @@ namespace SandboxForSolvingProgrammingProblems.Infrastructure.API
             return Instance;
         }
 
-        public async Task<Responce> GetCodeOnEvaluation(RequestEvaluation requestEvaluation)
+        public async Task<ResponceEvaluation> GetCodeOnEvaluation(RequestEvaluation requestEvaluation)
         {
             var content = new StringContent(JsonSerializer.Serialize(requestEvaluation));
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             var response = await httpClient.PostAsync(endpointEvaluationURL, content);
             string responseContent = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<Responce>(responseContent);
+            var result = JsonSerializer.Deserialize<ResponceEvaluation>(responseContent);
             return result;
         }
 
-        public async Task<Responce> GetStatus(string id)
+        public async Task<ResponceEvaluation> GetStatus(string id)
         {
             var response = await httpClient.GetAsync(id);
             string responseContent = await response.Content.ReadAsStringAsync();
-            Responce result = JsonSerializer.Deserialize<Responce>(responseContent);
+            ResponceEvaluation result = JsonSerializer.Deserialize<ResponceEvaluation>(responseContent);
 
             return result;
         }
