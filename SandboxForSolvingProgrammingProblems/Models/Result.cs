@@ -1,12 +1,14 @@
 ﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-
-[DataContract]
-public class Result
+namespace SandboxForSolvingProgrammingProblems.Models
 {
-    [JsonPropertyName("run_status")]
-    public RunStatus RunStatus { get; set; }
+    [DataContract]
+    public class Result
+    {
+        [JsonPropertyName("run_status")]
+        public RunStatus RunStatus { get; set; }
 
-    [JsonPropertyName("compile_status")]
-    public string CompileStatus { get; set; }
+        [JsonPropertyName("compile_status")]
+        public string CompileStatus { get; set; }
+    }
 }
