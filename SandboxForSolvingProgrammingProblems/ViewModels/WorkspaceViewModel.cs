@@ -88,7 +88,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
 
         //Content
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
-        private Responce responceEvaluation;
+        private ResponceEvaluation responceEvaluation;
         private Dictionary<bool, string> themeURI = new Dictionary<bool, string>()
         {
             {true,"\\Resources\\Theme\\Dark.xaml" },
@@ -97,13 +97,13 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
 
         //Parametrs
 
-        public Responce ResponceEvaluation 
+        public ResponceEvaluation ResponceEvaluation 
         {
             get 
             { 
                 if (responceEvaluation == null)
                 {
-                    responceEvaluation = new Responce();
+                    responceEvaluation = new ResponceEvaluation();
                     responceEvaluation.RequestStatus = new RequestStatus();
                 }
                 return responceEvaluation; 
