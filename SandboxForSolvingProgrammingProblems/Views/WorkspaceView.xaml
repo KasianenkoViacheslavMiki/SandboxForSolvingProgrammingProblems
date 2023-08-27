@@ -11,7 +11,7 @@
     
     <Grid x:Name="Workspace">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5px"/>
+            <RowDefinition Height="10px"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
