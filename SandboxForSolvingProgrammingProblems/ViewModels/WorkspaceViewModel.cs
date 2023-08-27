@@ -116,8 +116,10 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                             IsRunningSide = false;
                         }
 
-                        SelectedSideView = new TaskSettingsSideViewModel(this.requestEvaluation, ListTask);
+                        SelectedSideView = new TaskSettingsSideViewModel(this.requestEvaluation, ListTask, questionTitleSlugStorage);
                         SelectedSideView.Load += OnOffLoad;
+                        SelectedSideView.RemoveSelectedTask += OnRemoveSelectedTask;
+                        SelectedSideView.SelectedTask += OnSelectedTask;
                     }
                 }));
             }
@@ -165,7 +167,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {false,"\\Resources\\Theme\\Default.xaml" }
         };
 
-
+        private string? questionTitleSlugStorage = null;
         //Parametrs
 
         IDictionary<string, string> listTask = new Dictionary<string, string>();
@@ -198,8 +200,6 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             { 
                 responceEvaluation = value;
                 OnPropertyChanged(nameof(StatusString));
-                OnPropertyChanged(nameof(InputString));
-                OnPropertyChanged(nameof(ExpectedOutputString));
                 OnPropertyChanged(nameof(ResponceEvaluation));
             }
         }
@@ -214,14 +214,6 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             }
         }
 
-        public string? InputString
-        {
-            get
-            {
-                return requestEvaluation.Input;
-            }
-        }
-
         private string outputString = "";
         public string? OutputString
         {
@@ -233,13 +225,6 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {
                 outputString = value;
                 OnPropertyChanged(nameof(OutputString));
-            }
-        }
-        public string? ExpectedOutputString
-        {
-            get
-            {
-                return "Stub";
             }
         }
         #endregion
@@ -362,6 +347,15 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         private void OnOffLoad(bool obj)
         {
             isRunningSide = obj;
+        }
+        private void OnSelectedTask(object obj)
+        {
+            questionTitleSlugStorage = (string) obj;
+        }
+
+        private void OnRemoveSelectedTask(object obj)
+        {
+            questionTitleSlugStorage = null;
         }
         #endregion
     }

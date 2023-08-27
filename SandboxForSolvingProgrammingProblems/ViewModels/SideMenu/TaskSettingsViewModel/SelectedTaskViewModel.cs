@@ -15,6 +15,8 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsM
     {
         private RequestEvaluation requestEvaluation;
         private Question question;
+        private ResultParse task;
+        StringBuilder stringBuilder = new StringBuilder();
 
         private IParseContent parseContent;
 
@@ -37,7 +39,10 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsM
             parseContent = new ParserContent();
             this.requestEvaluation = requestEvaluation;
             this.question = question;
-            parseContent.GetParseContentTask(this.question.Content);
+            task= parseContent.GetParseContentTask(this.question.Content);
+            stringBuilder.Append(task.Decription);
+            stringBuilder.AppendLine(task.Input);
+            stringBuilder.AppendLine(task.ExpectedOutput);
             OnPropertyChanged(nameof(Title));
             OnPropertyChanged(nameof(Content));
         }
@@ -54,7 +59,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsM
         {
             get
             {
-                return this.question.Content;
+                return stringBuilder.ToString();
             }
         }
     }
