@@ -19,6 +19,16 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
 {
     class WorkspaceViewModel : BaseViewModel
     {
+        //Construtor
+        public WorkspaceViewModel()
+        {
+            this.selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
+            managerSandboxAPI = ManagerSandboxAPI.GetInstance();
+            managerTaskAPI = ManagerTaskAPI.GetInstance();
+            Languages = SupportedProgrammingLanguages.SupportedLanguages();
+        }
+
+        #region Command
         //Command
         private RelayCommand runCommand;
         public ICommand RunCommand 
@@ -107,8 +117,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 }));
             }
         }
+        #endregion
 
-        //Navigation
+        #region Navigation
         private BaseSideViewModel selectedSideView;
         public BaseSideViewModel SelectedSideView
         {
@@ -125,16 +136,18 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 selectedSideView = value;
             }
         }
+        #endregion
+
+        #region Manager`s instance
         //Manager
         private ISandbox managerSandboxAPI;
         private IManagerTask managerTaskAPI;
+        #endregion
 
+        #region Storage content
         //Content
         //Request to API
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
-
-        //Responce from API
-        private ResponceEvaluation responceEvaluation;
 
         //Path to Theme
         private Dictionary<bool, string> themeURI = new Dictionary<bool, string>()
@@ -159,8 +172,8 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 OnPropertyChanged(nameof(ListTask));
             }
         }
-
-
+        //Responce from API
+        private ResponceEvaluation responceEvaluation;
         public ResponceEvaluation ResponceEvaluation 
         {
             get 
@@ -181,7 +194,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 OnPropertyChanged(nameof(ResponceEvaluation));
             }
         }
+        #endregion
 
+        #region Parameters for show content
         public string? StatusString
         {
             get 
@@ -218,6 +233,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 return "Stub";
             }
         }
+        #endregion
+
+        #region Change Theme
         private bool toggleTheme = false;
         public bool ToggleTheme
         {
@@ -233,8 +251,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 OnPropertyChanged(nameof(ToggleTheme));
             }
         }
+        #endregion
 
-        #region Load parameters 
+        #region Content for Load`s binding 
         private bool isRunningSide = false;
         public bool IsRunningSide
         {
@@ -280,20 +299,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         }
         #endregion
 
-        private bool isCustom;
-        public bool IsCustom
-        {
-            get
-            {
-                return isCustom;
-            }
-            set
-            {
-                isCustom = value;
-                OnPropertyChanged(nameof(IsCustom));
-            }
-        }
-
+        #region Content for ComboBox`s choosing language binding 
         private ObservableCollection<Language> languages;
 
         public ObservableCollection<Language> Languages
@@ -324,6 +330,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 OnPropertyChanged(nameof(selectedLanguages));
             }
         }
+        #endregion
+
+        #region Content for TextBox`s input code binding 
 
         private string codeText;
 
@@ -339,16 +348,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 OnPropertyChanged(nameof(CodeText));
             }
         }
-
-
-
-        //Construtor
-        public WorkspaceViewModel()
-        {
-            this.selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
-            managerSandboxAPI = ManagerSandboxAPI.GetInstance();
-            managerTaskAPI = ManagerTaskAPI.GetInstance();
-            Languages = SupportedProgrammingLanguages.SupportedLanguages();
-        }
+        
+        #endregion
     }
 }
