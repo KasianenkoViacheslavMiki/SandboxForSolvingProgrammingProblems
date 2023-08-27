@@ -10,14 +10,14 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsM
     class BaseAutoViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        public event Action<string>? SelectedTask;
-        public event Action<string>? ReturnToListTask;
+        public event Action<object>? SelectedTask;
+        public event Action<object>? ReturnToListTask;
 
-        protected void OnSelectedTask(string value)
+        protected void OnSelectedTask(object value)
         {
             SelectedTask?.Invoke(value);
         }
-        protected void OnReturnToListTask(string value)
+        protected void OnReturnToListTask(object value)
         {
             ReturnToListTask?.Invoke(value);
         }
