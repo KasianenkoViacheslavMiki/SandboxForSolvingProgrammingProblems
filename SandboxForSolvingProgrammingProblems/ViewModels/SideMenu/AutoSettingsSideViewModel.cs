@@ -2,7 +2,7 @@
 using SandboxForSolvingProgrammingProblems.Infrastructure.API;
 using SandboxForSolvingProgrammingProblems.Infrastructure.API.Interface;
 using SandboxForSolvingProgrammingProblems.Models;
-using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoViewModel;
+using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
