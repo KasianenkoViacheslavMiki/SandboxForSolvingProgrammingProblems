@@ -259,11 +259,11 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         {
             get
             {
-                return isRunningSide;
+                return !isRunningSide;
             }
             set
             {
-                IsRunningSide = value;
+                isRunningSide = value;
                 OnPropertyChanged(nameof(IsRunningSide));
                 OnPropertyChanged(nameof(IsLoadSide));
             }
@@ -272,7 +272,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         {
             get
             {
-                return isRunning ? Visibility.Visible : Visibility.Hidden;
+                return isRunningSide ? Visibility.Visible : Visibility.Hidden;
             }
         }
 
