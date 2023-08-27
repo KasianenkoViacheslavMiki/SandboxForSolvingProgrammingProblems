@@ -8,7 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListBox ItemsSource="{Binding ListTask}"  SelectedItem="{Binding SelectedTask}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="1" ItemsSource="{Binding ListTask}"  SelectedItem="{Binding SelectedTask}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding SelectedTaskCommand}"/>
