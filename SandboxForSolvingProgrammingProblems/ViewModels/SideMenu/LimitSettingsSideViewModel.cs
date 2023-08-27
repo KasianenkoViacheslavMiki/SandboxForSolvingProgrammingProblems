@@ -9,10 +9,10 @@ using System.Windows.Input;
 
 namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
 {
-    class ManualSettingsSideViewModel : BaseSideViewModel
+    class LimitSettingsSideViewModel : BaseSideViewModel
     {
         //Copy link to requestEvaluation in Heap (Base)
-        public ManualSettingsSideViewModel(RequestEvaluation requestEvaluation): base(requestEvaluation) 
+        public LimitSettingsSideViewModel(RequestEvaluation requestEvaluation): base(requestEvaluation) 
         {
 
         }

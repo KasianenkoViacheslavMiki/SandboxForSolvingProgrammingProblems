@@ -1,4 +1,6 @@
 ﻿using SandboxForSolvingProgrammingProblems.Infrastructure;
+using SandboxForSolvingProgrammingProblems.Infrastructure.Parser;
+using SandboxForSolvingProgrammingProblems.Infrastructure.Parser.Interface;
 using SandboxForSolvingProgrammingProblems.Models;
 using System;
 using System.Collections.Generic;
@@ -7,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsModel
+namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsModel
 {
     class SelectedTaskViewModel : BaseAutoViewModel
     {
         private RequestEvaluation requestEvaluation;
         private Question question;
+
+        private IParseContent parseContent;
 
         private ICommand returnCommand;
         
@@ -30,8 +34,10 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
         //Copy link to requestEvaluation in Heap
         public SelectedTaskViewModel(RequestEvaluation requestEvaluation, Question question)
         {
+            parseContent = new ParserContent();
             this.requestEvaluation = requestEvaluation;
             this.question = question;
+            parseContent.GetParseContentTask(this.question.Content);
             OnPropertyChanged(nameof(Title));
             OnPropertyChanged(nameof(Content));
         }

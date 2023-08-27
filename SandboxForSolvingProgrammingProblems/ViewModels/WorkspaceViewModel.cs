@@ -22,7 +22,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         //Construtor
         public WorkspaceViewModel()
         {
-            this.selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
+            this.selectedSideView = new LimitSettingsSideViewModel(this.requestEvaluation);
             managerSandboxAPI = ManagerSandboxAPI.GetInstance();
             managerTaskAPI = ManagerTaskAPI.GetInstance();
             Languages = SupportedProgrammingLanguages.SupportedLanguages();
@@ -83,9 +83,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {
                 return manualCommand ?? (manualCommand = new RelayCommand(async obj =>
                 {
-                    if (SelectedSideView is not ManualSettingsSideViewModel)
+                    if (SelectedSideView is not LimitSettingsSideViewModel)
                     {
-                        SelectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
+                        SelectedSideView = new LimitSettingsSideViewModel(this.requestEvaluation);
                     }
                 }));
             }
@@ -98,7 +98,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {
                 return autoCommand ?? (autoCommand = new RelayCommand(async obj =>
                 {
-                    if (SelectedSideView is not AutoSettingsSideViewModel)
+                    if (SelectedSideView is not TaskSettingsSideViewModel)
                     {
                         if (ListTask.Count == 0)
                         {
@@ -116,7 +116,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                             IsRunningSide = false;
                         }
 
-                        SelectedSideView = new AutoSettingsSideViewModel(this.requestEvaluation, ListTask);
+                        SelectedSideView = new TaskSettingsSideViewModel(this.requestEvaluation, ListTask);
                         SelectedSideView.Load += OnOffLoad;
                     }
                 }));
@@ -136,7 +136,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {
                 if (value is not BaseSideViewModel)
                 {
-                    selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
+                    selectedSideView = new LimitSettingsSideViewModel(this.requestEvaluation);
                 }
                 else
                 {

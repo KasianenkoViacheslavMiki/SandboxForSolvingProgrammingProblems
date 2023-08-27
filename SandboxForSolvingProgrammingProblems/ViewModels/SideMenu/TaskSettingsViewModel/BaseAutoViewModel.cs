@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsModel
+namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsModel
 {
     class BaseAutoViewModel : INotifyPropertyChanged
     {

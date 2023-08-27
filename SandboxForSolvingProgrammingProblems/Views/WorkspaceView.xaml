@@ -38,10 +38,10 @@
             </Grid>
             <ContentControl Grid.Row="1" Content="{Binding SelectedSideView}" RenderTransformOrigin="0.817,1.608">
                 <ContentControl.Resources>
-                    <DataTemplate DataType="{x:Type viewsmodels:ManualSettingsSideViewModel}">
+                    <DataTemplate DataType="{x:Type viewsmodels:LimitSettingsSideViewModel}">
                         <views:ManualSettingsSideView/>
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewsmodels:AutoSettingsSideViewModel}">
+                    <DataTemplate DataType="{x:Type viewsmodels:TaskSettingsSideViewModel}">
                         <views:AutoSettingsSideViewModel/>
                     </DataTemplate>
                 </ContentControl.Resources>

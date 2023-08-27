@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SandboxForSolvingProgrammingProblems.Views.SideMenu.AutoSettingsView
+namespace SandboxForSolvingProgrammingProblems.Views.SideMenu.TaskSettingsView
 {
     /// <summary>
     /// Interaction logic for SelectedTaskView.xaml
