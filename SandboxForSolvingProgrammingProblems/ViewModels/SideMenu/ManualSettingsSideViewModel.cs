@@ -11,12 +11,10 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
 {
     class ManualSettingsSideViewModel : BaseSideViewModel
     {
-        private RequestEvaluation requestEvaluation;
-
-        //Copy link to requestEvaluation in Heap
-        public ManualSettingsSideViewModel(RequestEvaluation requestEvaluation)
+        //Copy link to requestEvaluation in Heap (Base)
+        public ManualSettingsSideViewModel(RequestEvaluation requestEvaluation): base(requestEvaluation) 
         {
-            this.requestEvaluation = requestEvaluation;
+
         }
 
         public int MemoryLimit
