@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SandboxForSolvingProgrammingProblems"
         xmlns:viewsmodels="clr-namespace:SandboxForSolvingProgrammingProblems.ViewModels"
         xmlns:views="clr-namespace:SandboxForSolvingProgrammingProblems.Views"
-        xmlns:customui="clr-namespace:SandboxForSolvingProgrammingProblems.CustomUI"
+        xmlns:customui="clr-namespace:SandboxForSolvingProgrammingProblems.Infrastructure.CustomUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1600"
         WindowStartupLocation="CenterScreen"
