@@ -10,11 +10,14 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
     class SelectedTaskViewModel : BaseAutoViewModel
     {
         private RequestEvaluation requestEvaluation;
+        private Question question;
+
 
         //Copy link to requestEvaluation in Heap
-        public SelectedTaskViewModel(RequestEvaluation requestEvaluation)
+        public SelectedTaskViewModel(RequestEvaluation requestEvaluation, Question question)
         {
             this.requestEvaluation = requestEvaluation;
+            this.question = question;
         }
 
         public int MemoryLimit
