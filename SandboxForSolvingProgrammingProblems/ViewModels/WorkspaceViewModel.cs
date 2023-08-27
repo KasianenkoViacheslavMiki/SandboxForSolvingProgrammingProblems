@@ -343,17 +343,15 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
 
         #region Content for TextBox`s input code binding 
 
-        private string codeText;
-
         public string CodeText
         {
             get
             {
-                return codeText;
+                return requestEvaluation.Source;
             }
             set
             {
-                codeText = value;
+                requestEvaluation.Source = value;
                 OnPropertyChanged(nameof(CodeText));
             }
         }
