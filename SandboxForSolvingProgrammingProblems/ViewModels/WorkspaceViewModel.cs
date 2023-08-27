@@ -100,18 +100,22 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 {
                     if (SelectedSideView is not AutoSettingsSideViewModel)
                     {
-                        IsRunningSide = true;
-                        try
+                        if (ListTask.Count == 0)
                         {
-                            ListTask = await managerTaskAPI.GetTasksList();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Error side", MessageBoxButton.OK, MessageBoxImage.Error);
+                            IsRunningSide = true;
+                            try
+                            {
+                                ListTask = await managerTaskAPI.GetTasksList();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error side", MessageBoxButton.OK, MessageBoxImage.Error);
+                                IsRunningSide = false;
+                                return;
+                            }
                             IsRunningSide = false;
-                            return;
                         }
-                        IsRunningSide = false;
+
                         SelectedSideView = new AutoSettingsSideViewModel(this.requestEvaluation, ListTask);
                     }
                 }));
