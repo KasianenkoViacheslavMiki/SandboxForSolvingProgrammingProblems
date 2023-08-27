@@ -41,6 +41,9 @@
                     <DataTemplate DataType="{x:Type viewsmodels:ManualSettingsSideViewModel}">
                         <views:ManualSettingsSideView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewsmodels:AutoSettingsSideViewModel}">
+                        <views:AutoSettingsSideViewModel/>
+                    </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
         </Grid>

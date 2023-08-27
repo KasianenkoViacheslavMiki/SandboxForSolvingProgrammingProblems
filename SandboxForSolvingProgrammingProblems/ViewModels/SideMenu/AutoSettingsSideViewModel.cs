@@ -42,6 +42,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
             set
             {
                 listTask = value;
+                OnPropertyChanged(nameof(ListTask));
             }
         }
 
@@ -59,7 +60,11 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
                 {
                     selectedSideView = new ListTaskViewModel(ListTask);
                 }
-                selectedSideView = value;
+                else
+                {
+                    selectedSideView = value;
+                }
+                OnPropertyChanged(nameof(SelectedSideView));
             }
         }
     }
