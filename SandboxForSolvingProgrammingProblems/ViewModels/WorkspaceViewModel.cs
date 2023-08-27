@@ -66,6 +66,48 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             }
         }
 
+        private RelayCommand manualCommand;
+        public ICommand ManualCommand
+        {
+            get
+            {
+                return manualCommand ?? (manualCommand = new RelayCommand(async obj =>
+                {
+                    if (selectedSideView is not ManualSettingsSideViewModel)
+                    {
+                        selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
+                    }
+                }));
+            }
+        }
+
+        private RelayCommand autoCommand;
+        public ICommand AutoCommand
+        {
+            get
+            {
+                return autoCommand ?? (autoCommand = new RelayCommand(async obj =>
+                {
+                    if (selectedSideView is not AutoSettingsSideViewModel)
+                    {
+                        IsRunningSide = true;
+                        try
+                        {
+                            ListTask = await managerTaskAPI.GetTasksList();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error side", MessageBoxButton.OK, MessageBoxImage.Error);
+                            IsRunningSide = false;
+                            return;
+                        }
+                        IsRunningSide = false;
+                        selectedSideView = new AutoSettingsSideViewModel(this.requestEvaluation, ListTask);
+                    }
+                }));
+            }
+        }
+
         //Navigation
         private BaseSideViewModel selectedSideView;
         public BaseSideViewModel SelectedSideView
@@ -85,8 +127,8 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         }
         //Manager
         private ISandbox managerSandboxAPI;
-
         private IManagerTask managerTaskAPI;
+
         //Content
         //Request to API
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
@@ -192,6 +234,29 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             }
         }
 
+        #region Load parameters 
+        private bool isRunningSide = false;
+        public bool IsRunningSide
+        {
+            get
+            {
+                return isRunningSide;
+            }
+            set
+            {
+                IsRunningSide = value;
+                OnPropertyChanged(nameof(IsRunningSide));
+                OnPropertyChanged(nameof(IsLoadSide));
+            }
+        }
+        public Visibility IsLoadSide
+        {
+            get
+            {
+                return isRunning ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
         private bool isRunning = false;
         public bool IsRunning
         {
@@ -213,6 +278,8 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 return isRunning ? Visibility.Visible : Visibility.Hidden;
             }
         }
+        #endregion
+
         private bool isCustom;
         public bool IsCustom
         {
