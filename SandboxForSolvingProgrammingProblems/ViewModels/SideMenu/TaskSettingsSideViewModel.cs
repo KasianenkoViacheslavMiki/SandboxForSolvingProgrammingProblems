@@ -22,10 +22,17 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
             managerTaskAPI = ManagerTaskAPI.GetInstance();
         }
 
-        public TaskSettingsSideViewModel(RequestEvaluation requestEvaluation, IDictionary<string, string> listTask) : this(requestEvaluation)
+        public TaskSettingsSideViewModel(RequestEvaluation requestEvaluation, IDictionary<string, string> listTask, string? selectedTask = null) : this(requestEvaluation)
         {
             this.ListTask = listTask;
-            SelectedSideView = new ListTaskViewModel(ListTask);
+            if (selectedTask == null)
+            {
+                SelectedSideView = new ListTaskViewModel(ListTask);
+            }
+            else
+            {
+                OpenSelectedTaskViewModel((string)selectedTask);
+            }
         }
 
         private IManagerTask managerTaskAPI;
@@ -73,18 +80,20 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
             }
         }
 
-        private void ReturnToListTask(string obj)
+        private void ReturnToListTask(object obj)
         {
             SelectedSideView = new ListTaskViewModel(ListTask);
+            OnRemoveSelectedTask(obj);
         }
 
-        private async void OpenSelectedTaskViewModel(string obj)
+        private async void OpenSelectedTaskViewModel(object obj)
         {
             OnLoad(true);
             try
             {
-                ResponceTask question = await managerTaskAPI.GetTask(obj);
+                ResponceTask question = await managerTaskAPI.GetTask((string) obj);
                 SelectedSideView = new SelectedTaskViewModel(requestEvaluation, question.Question);
+                OnSelectedTask(obj);
             }
             catch (Exception ex)
             {

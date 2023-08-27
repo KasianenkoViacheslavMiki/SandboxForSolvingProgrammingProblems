@@ -14,6 +14,18 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
 
         public event Action<bool> Load;
 
+        public event Action<object> SelectedTask;
+
+        public event Action<object> RemoveSelectedTask;
+
+        protected void OnRemoveSelectedTask(object value)
+        {
+            RemoveSelectedTask?.Invoke(value);
+        }
+        protected void OnSelectedTask(object value)
+        {
+            SelectedTask?.Invoke(value);
+        }
         protected void OnLoad(bool value)
         {
             Load?.Invoke(value);
