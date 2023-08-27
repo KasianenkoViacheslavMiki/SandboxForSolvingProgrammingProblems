@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoViewModel
+namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsModel
 {
     class SelectedTaskViewModel : BaseAutoViewModel
     {
