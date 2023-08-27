@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace SandboxForSolvingProgrammingProblems.CustomUI
+namespace SandboxForSolvingProgrammingProblems.Infrastructure.CustomUI
 {
     public class NumberTextBox : TextBox
     {
