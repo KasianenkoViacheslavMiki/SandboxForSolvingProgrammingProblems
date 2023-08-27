@@ -15,6 +15,6 @@
         </Grid.RowDefinitions>
         <Button Command="{Binding ReturnCommand}" Grid.Row="1" x:Name="Return" Content="←"/>
         <TextBlock Grid.Row="2" FontSize="20px" x:Name="Title" Text="{Binding Title}"/>
-        <TextBox IsReadOnly="True" Grid.Row="3" x:Name="Content" Text="{Binding Content, Mode=OneWay}"/>
+        <TextBox TextWrapping="Wrap"  IsReadOnly="True" Grid.Row="3" x:Name="Content" Text="{Binding Content, Mode=OneWay}"/>
     </Grid>
 </UserControl>
