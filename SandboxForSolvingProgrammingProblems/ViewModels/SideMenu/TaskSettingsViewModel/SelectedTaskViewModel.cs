@@ -57,31 +57,5 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsM
                 return this.question.Content;
             }
         }
-
-        public int MemoryLimit
-        {
-            get
-            {
-                return requestEvaluation.MemoryLimit;
-            }
-            set
-            {
-                requestEvaluation.MemoryLimit = value;
-                OnPropertyChanged(nameof(MemoryLimit));
-            }
-        }
-
-        public int TimeLimit
-        {
-            get
-            {
-                return requestEvaluation.TimeLimit;
-            }
-            set
-            {
-                requestEvaluation.TimeLimit = value;
-                OnPropertyChanged(nameof(TimeLimit));
-            }
-        }
     }
 }
