@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsModel
+namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsModel
 {
     class ListTaskViewModel : BaseAutoViewModel
     {

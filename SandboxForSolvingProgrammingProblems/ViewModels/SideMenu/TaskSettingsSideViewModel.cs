@@ -2,7 +2,7 @@
 using SandboxForSolvingProgrammingProblems.Infrastructure.API;
 using SandboxForSolvingProgrammingProblems.Infrastructure.API.Interface;
 using SandboxForSolvingProgrammingProblems.Models;
-using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsModel;
+using SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.TaskSettingsModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +13,16 @@ using System.Windows.Input;
 
 namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
 {
-    class AutoSettingsSideViewModel : BaseSideViewModel
+    class TaskSettingsSideViewModel : BaseSideViewModel
     {
 
         //Copy link to requestEvaluation in Heap (Base)
-        public AutoSettingsSideViewModel(RequestEvaluation requestEvaluation) : base(requestEvaluation)
+        public TaskSettingsSideViewModel(RequestEvaluation requestEvaluation) : base(requestEvaluation)
         {
             managerTaskAPI = ManagerTaskAPI.GetInstance();
         }
 
-        public AutoSettingsSideViewModel(RequestEvaluation requestEvaluation, IDictionary<string, string> listTask) : this(requestEvaluation)
+        public TaskSettingsSideViewModel(RequestEvaluation requestEvaluation, IDictionary<string, string> listTask) : this(requestEvaluation)
         {
             this.ListTask = listTask;
             SelectedSideView = new ListTaskViewModel(ListTask);
