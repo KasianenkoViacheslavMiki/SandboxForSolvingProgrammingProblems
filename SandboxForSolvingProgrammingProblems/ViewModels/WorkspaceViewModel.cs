@@ -83,9 +83,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {
                 return manualCommand ?? (manualCommand = new RelayCommand(async obj =>
                 {
-                    if (selectedSideView is not ManualSettingsSideViewModel)
+                    if (SelectedSideView is not ManualSettingsSideViewModel)
                     {
-                        selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
+                        SelectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
                     }
                 }));
             }
@@ -98,7 +98,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
             {
                 return autoCommand ?? (autoCommand = new RelayCommand(async obj =>
                 {
-                    if (selectedSideView is not AutoSettingsSideViewModel)
+                    if (SelectedSideView is not AutoSettingsSideViewModel)
                     {
                         IsRunningSide = true;
                         try
@@ -112,7 +112,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                             return;
                         }
                         IsRunningSide = false;
-                        selectedSideView = new AutoSettingsSideViewModel(this.requestEvaluation, ListTask);
+                        SelectedSideView = new AutoSettingsSideViewModel(this.requestEvaluation, ListTask);
                     }
                 }));
             }
@@ -133,7 +133,11 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 {
                     selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
                 }
-                selectedSideView = value;
+                else
+                {
+                    selectedSideView = value;
+                }
+                OnPropertyChanged(nameof(SelectedSideView));
             }
         }
         #endregion
