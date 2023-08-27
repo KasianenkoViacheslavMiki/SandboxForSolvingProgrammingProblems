@@ -33,7 +33,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="1" Name="Manual" Content="Manual" ToolTip="Manual settings your sandbox"/>
-                <Button IsEnabled="False" Grid.Column="3" Name="ListTask" Content="List Task" ToolTip="List task where you can selected task"/>
+                <Button Grid.Column="3" Name="ListTask" Content="List Task" ToolTip="List task where you can selected task"/>
             </Grid>
             <ContentControl Grid.Row="1" Content="{Binding SelectedSideView}" RenderTransformOrigin="0.817,1.608">
                 <ContentControl.Resources>

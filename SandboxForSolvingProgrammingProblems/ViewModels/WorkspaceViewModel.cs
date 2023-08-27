@@ -86,16 +86,38 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         //Manager
         private ISandbox managerSandboxAPI;
 
+        private IManagerTask managerTaskAPI;
         //Content
+        //Request to API
         private RequestEvaluation requestEvaluation = new RequestEvaluation();
+
+        //Responce from API
         private ResponceEvaluation responceEvaluation;
+
+        //Path to Theme
         private Dictionary<bool, string> themeURI = new Dictionary<bool, string>()
         {
             {true,"\\Resources\\Theme\\Dark.xaml" },
             {false,"\\Resources\\Theme\\Default.xaml" }
         };
 
+
         //Parametrs
+
+        IDictionary<string, string> listTask = new Dictionary<string, string>();
+        public IDictionary<string, string> ListTask 
+        {
+            get 
+            { 
+                return listTask; 
+            }
+            set 
+            { 
+                listTask = value;
+                OnPropertyChanged(nameof(ListTask));
+            }
+        }
+
 
         public ResponceEvaluation ResponceEvaluation 
         {
@@ -252,14 +274,14 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
         }
 
 
+
         //Construtor
         public WorkspaceViewModel()
         {
             this.selectedSideView = new ManualSettingsSideViewModel(this.requestEvaluation);
             managerSandboxAPI = ManagerSandboxAPI.GetInstance();
+            managerTaskAPI = ManagerTaskAPI.GetInstance();
             Languages = SupportedProgrammingLanguages.SupportedLanguages();
         }
-
-        
     }
 }
