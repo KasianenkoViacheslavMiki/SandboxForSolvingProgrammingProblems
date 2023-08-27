@@ -1,4 +1,5 @@
 ﻿using SandboxForSolvingProgrammingProblems.Infrastructure;
+using SandboxForSolvingProgrammingProblems.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,10 +16,10 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
 
         public ListTaskViewModel(IDictionary<string, string> listTask)
         {
-            ListTask = new ObservableCollection<(string, string)>();
+            ListTask = new ObservableCollection<TaskItem>();
             foreach (var task in listTask)
             {
-                ListTask.Add((task.Key, task.Value));
+                ListTask.Add(new TaskItem(task.Key, task.Value));
             }
         }
 
@@ -39,9 +40,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
             }
         }
 
-        private ObservableCollection<(string, string)> listTask;
+        private ObservableCollection<TaskItem> listTask;
 
-		public ObservableCollection<(string, string)> ListTask
+		public ObservableCollection<TaskItem> ListTask
         {
 			get 
             { 
@@ -56,9 +57,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
 
         
 
-        private (string, string) selectedTask;
+        private TaskItem selectedTask;
 
-        public (string, string) SelectedTask
+        public TaskItem SelectedTask
         {
             get 
             { 
