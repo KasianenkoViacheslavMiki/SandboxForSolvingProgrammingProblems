@@ -12,6 +12,13 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
     {
         protected RequestEvaluation requestEvaluation;
 
+        public event Action<bool> Load;
+
+        protected void OnLoad(bool value)
+        {
+            Load?.Invoke(value);
+        }
+
         //Copy link to requestEvaluation in Heap
         public BaseSideViewModel(RequestEvaluation requestEvaluation)
         {

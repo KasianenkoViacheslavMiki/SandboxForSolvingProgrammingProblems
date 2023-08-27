@@ -12,8 +12,6 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
 {
     class ListTaskViewModel : BaseAutoViewModel
     {
-        public event Action<string> OnSelectedTask;
-
         public ListTaskViewModel(IDictionary<string, string> listTask)
         {
             ListTask = new ObservableCollection<TaskItem>();
@@ -33,9 +31,9 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
         {
             get
             {
-                return selectedTaskCommand ?? (selectedTaskCommand = new RelayCommand(async obj =>
+                return selectedTaskCommand ?? (selectedTaskCommand = new RelayCommand(async _ =>
                 {
-                    OnSelectedTask((string) obj);
+                    OnSelectedTask(SelectedTask.QuestionTitleSlug);
                 }));
             }
         }

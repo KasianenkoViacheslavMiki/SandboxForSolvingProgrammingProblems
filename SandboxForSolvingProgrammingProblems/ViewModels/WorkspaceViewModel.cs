@@ -117,6 +117,7 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                         }
 
                         SelectedSideView = new AutoSettingsSideViewModel(this.requestEvaluation, ListTask);
+                        SelectedSideView.Load += OnOffLoad;
                     }
                 }));
             }
@@ -356,7 +357,14 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels
                 OnPropertyChanged(nameof(CodeText));
             }
         }
-        
+
+        #endregion
+
+        #region Method for event
+        private void OnOffLoad(bool obj)
+        {
+            isRunningSide = obj;
+        }
         #endregion
     }
 }

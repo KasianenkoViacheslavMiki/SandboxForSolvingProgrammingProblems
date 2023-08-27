@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
@@ -59,13 +60,39 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu
                 if (value is not BaseAutoViewModel)
                 {
                     selectedSideView = new ListTaskViewModel(ListTask);
+                    selectedSideView.SelectedTask += OpenSelectedTaskViewModel;
+                    selectedSideView.ReturnToListTask += ReturnToListTask;
                 }
                 else
                 {
                     selectedSideView = value;
+                    selectedSideView.SelectedTask += OpenSelectedTaskViewModel;
+                    selectedSideView.ReturnToListTask += ReturnToListTask;
                 }
                 OnPropertyChanged(nameof(SelectedSideView));
             }
+        }
+
+        private void ReturnToListTask(string obj)
+        {
+            SelectedSideView = new ListTaskViewModel(ListTask);
+        }
+
+        private async void OpenSelectedTaskViewModel(string obj)
+        {
+            OnLoad(true);
+            try
+            {
+                ResponceTask question = await managerTaskAPI.GetTask(obj);
+                SelectedSideView = new SelectedTaskViewModel(requestEvaluation, question.Question);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error settings", MessageBoxButton.OK, MessageBoxImage.Error);
+                OnLoad(false);
+                return;
+            }
+            OnLoad(false);
         }
     }
 }
