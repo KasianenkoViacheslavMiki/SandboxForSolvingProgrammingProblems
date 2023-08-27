@@ -26,14 +26,13 @@ namespace SandboxForSolvingProgrammingProblems.ViewModels.SideMenu.AutoSettingsM
         {
         }
 
+        private ICommand selectedTaskCommand;
 
-        private ICommand taskCommand;
-
-        public ICommand TaskCommand
+        public ICommand SelectedTaskCommand
         {
             get
             {
-                return taskCommand ?? (taskCommand = new RelayCommand(async obj =>
+                return selectedTaskCommand ?? (selectedTaskCommand = new RelayCommand(async obj =>
                 {
                     OnSelectedTask((string) obj);
                 }));
