@@ -19,6 +19,12 @@
             <Setter Property="FontSize" Value="16"/>
         </Style>
 
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource TextBoxBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBoxForeground}"  />
+        </Style>
+
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="14px"/>
             <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
